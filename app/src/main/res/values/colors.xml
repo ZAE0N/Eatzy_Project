@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Eatzy Sky 테마 -->
+    <color name="primary">#38BDF8</color>
+    <color name="primary_dk">#0EA5E9</color>
+    <color name="primary_lt">#F0F9FF</color>
+    <color name="primary_md">#BAE6FD</color>
+    <color name="accent">#7DD3FC</color>
+    <color name="bg">#F0F9FF</color>
+
+    <color name="blue">#3B82F6</color>
+    <color name="green">#22C55E</color>
+    <color name="green_dk">#16A34A</color>
+    <color name="green_bg">#DCFCE7</color>
+    <color name="red">#EF4444</color>
+    <color name="amber">#F59E0B</color>
+    <color name="amber_dk">#D97706</color>
+    <color name="amber_bg">#FEF3C7</color>
+    <color name="purple">#7C3AED</color>
+    <color name="purple_bg">#EDE9FE</color>
+
+    <color name="gray_50">#F9FAFB</color>
+    <color name="gray_100">#F3F4F6</color>
+    <color name="gray_200">#E5E7EB</color>
+    <color name="gray_300">#D1D5DB</color>
+    <color name="gray_400">#9CA3AF</color>
+    <color name="gray_500">#6B7280</color>
+    <color name="gray_700">#374151</color>
+    <color name="gray_900">#111827</color>
+
+    <!-- 룰렛 화면 (!DOCTYPE.html) -->
+    <color name="roulette_primary">#4CA1AF</color>
+    <color name="roulette_primary_dk">#3B8A97</color>
+    <color name="roulette_light">#E0F2F4</color>
+    <color name="roulette_bg">#F8F9FA</color>
+    <color name="text_navy">#1A2940</color>
+
+    <!-- 마커 핀 색상 -->
+    <color name="pin_orange">#F59E0B</color>
+    <color name="pin_green">#10B981</color>
+    <color name="pin_purple">#8B5CF6</color>
+
+    <color name="map_bg">#DDEEDD</color>
+</resources>

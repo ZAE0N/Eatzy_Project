@@ -1,0 +1,13 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="280dp"
+    android:height="280dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <!-- 6분할 룰렛판: 화이트 / 연한 하늘색 / 시그니처 하늘색 교차 -->
+    <path android:fillColor="#FFFFFF" android:pathData="M50,50 L50,0 A50,50 0 0 1 93.30,25 Z" />
+    <path android:fillColor="#E0F2F4" android:pathData="M50,50 L93.30,25 A50,50 0 0 1 93.30,75 Z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M50,50 L93.30,75 A50,50 0 0 1 50,100 Z" />
+    <path android:fillColor="#4CA1AF" android:pathData="M50,50 L50,100 A50,50 0 0 1 6.70,75 Z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M50,50 L6.70,75 A50,50 0 0 1 6.70,25 Z" />
+    <path android:fillColor="#E0F2F4" android:pathData="M50,50 L6.70,25 A50,50 0 0 1 50,0 Z" />
+</vector>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".RestaurantMapActivity">
+
+    <!-- 검색 바 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="14dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/btn_back"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_icon_box"
+            android:gravity="center"
+            android:text="←"
+            android:textColor="@color/gray_700"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_input"
+            android:hint="🔍 식당 이름, 메뉴 검색"
+            android:inputType="text"
+            android:paddingHorizontal="14dp"
+            android:textColor="@color/gray_700"
+            android:textColorHint="@color/gray_400"
+            android:textSize="14sp"
+            android:importantForAutofill="no" />
+    </LinearLayout>
+
+    <!-- 지도 영역 (실제 구현 시 MapView/SupportMapFragment 로 교체) -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@color/map_bg">
+
+        <View
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_my_loc" />
+
+        <TextView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/bg_pin_primary"
+            android:gravity="center"
+            android:text="🍜"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="200dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/bg_pin_orange"
+            android:gravity="center"
+            android:text="🍱"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="240dp"
+            android:layout_marginTop="125dp"
+            android:background="@drawable/bg_pin_green"
+            android:gravity="center"
+            android:text="☕"
+            android:textSize="11sp" />
+
+        <TextView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_gravity="top|start"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="150dp"
+            android:background="@drawable/bg_pin_purple"
+            android:gravity="center"
+            android:text="🍕"
+            android:textSize="11sp" />
+    </FrameLayout>
+
+    <!-- 식당 리스트 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 1 -->
+            <LinearLayout style="@style/RestItem">
+                <TextView style="@style/RestThumb" android:text="🍜" />
+                <LinearLayout style="@style/RestInfo">
+                    <TextView style="@style/RestName" android:text="맛있는 국밥집  한식" />
+                    <TextView style="@style/RestMeta" android:text="⭐ 4.5 · 도보 3분 (250m)" />
+                    <TextView style="@style/RestMeta" android:text="서울 강남구 역삼동 123" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 2 -->
+            <LinearLayout style="@style/RestItem">
+                <TextView style="@style/RestThumb" android:text="🍱" />
+                <LinearLayout style="@style/RestInfo">
+                    <TextView style="@style/RestName" android:text="일본식 도시락  일식" />
+                    <TextView style="@style/RestMeta" android:text="⭐ 4.3 · 도보 5분 (400m)" />
+                    <TextView style="@style/RestMeta" android:text="서울 강남구 역삼동 456" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 3 -->
+            <LinearLayout style="@style/RestItem">
+                <TextView style="@style/RestThumb" android:text="☕" />
+                <LinearLayout style="@style/RestInfo">
+                    <TextView style="@style/RestName" android:text="카페 브런치  양식" />
+                    <TextView style="@style/RestMeta" android:text="⭐ 4.1 · 도보 6분 (500m)" />
+                    <TextView style="@style/RestMeta" android:text="서울 강남구 역삼동 789" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 4 -->
+            <LinearLayout style="@style/RestItem">
+                <TextView style="@style/RestThumb" android:text="🍕" />
+                <LinearLayout style="@style/RestInfo">
+                    <TextView style="@style/RestName" android:text="화덕 피자  양식" />
+                    <TextView style="@style/RestMeta" android:text="⭐ 4.6 · 도보 8분 (650m)" />
+                    <TextView style="@style/RestMeta" android:text="서울 강남구 역삼동 321" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
