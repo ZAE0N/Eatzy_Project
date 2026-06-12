@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 커뮤니티 목록 한 항목. CommunityListActivity 에서 게시글 수만큼 inflate. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/post_card"
+        style="@style/PostCard">
+
+        <LinearLayout style="@style/PostHeader">
+            <TextView android:id="@+id/post_avatar" style="@style/Avatar" android:text="?" />
+            <TextView android:id="@+id/post_author" style="@style/PostAuthor" android:text="작성자" />
+            <TextView android:id="@+id/post_date" style="@style/PostDate" android:text="" />
+        </LinearLayout>
+
+        <TextView android:id="@+id/post_title" style="@style/PostTitle" android:text="제목" />
+        <TextView android:id="@+id/post_preview" style="@style/PostPreview" android:text="내용" />
+        <TextView android:id="@+id/post_footer" style="@style/PostFooter" android:text="💬 댓글 보기" />
+    </LinearLayout>
+
+    <View style="@style/PostDivider" />
+</LinearLayout>

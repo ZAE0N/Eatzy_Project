@@ -69,7 +69,7 @@
                 android:textSize="14sp"
                 android:importantForAutofill="no" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_send_code"
                 android:layout_width="wrap_content"
                 android:layout_height="46dp"
@@ -139,7 +139,7 @@
                 android:textSize="14sp"
                 android:importantForAutofill="no" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_verify"
                 android:layout_width="wrap_content"
                 android:layout_height="46dp"
@@ -213,7 +213,7 @@
             android:entries="@array/languages"
             android:paddingHorizontal="12dp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_signup"
             android:layout_width="match_parent"
             android:layout_height="50dp"

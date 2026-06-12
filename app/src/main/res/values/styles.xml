@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- 로고 폰트: HTML 시안의 Outfit(스카이 화면)·Nunito(룰렛 화면).
+         가변폰트에 textStyle bold(합성 볼드)로 굵게. 한글 글리프가 없으므로 로고("Eatzy"/"E")에만 사용. -->
+    <style name="LogoOutfit">
+        <item name="android:fontFamily">@font/outfit</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="LogoNunito">
+        <item name="android:fontFamily">@font/nunito</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- 룰렛 메뉴 라벨: 칸 전체 크기로 깔고 상단 중앙에 글자를 둔 뒤,
+         각 칸 각도만큼 회전시켜 방사형으로 배치한다(룰렛판과 함께 회전). -->
+    <style name="RouletteLabel">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">top|center_horizontal</item>
+        <item name="android:paddingTop">38dp</item>
+        <item name="android:textColor">@color/text_navy</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <!-- 입력 필드 라벨 -->
     <style name="FieldLabel">
         <item name="android:layout_width">wrap_content</item>

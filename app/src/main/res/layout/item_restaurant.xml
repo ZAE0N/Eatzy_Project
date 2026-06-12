@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 식당 리스트 한 줄. RestaurantMapActivity 에서 식당 수만큼 inflate 한다. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/RestItem">
+
+    <TextView
+        android:id="@+id/rest_thumb"
+        style="@style/RestThumb"
+        android:text="🍽️" />
+
+    <LinearLayout style="@style/RestInfo">
+
+        <TextView
+            android:id="@+id/rest_name"
+            style="@style/RestName"
+            android:text="식당명" />
+
+        <TextView
+            android:id="@+id/rest_meta1"
+            style="@style/RestMeta"
+            android:text="⭐ 0.0 · 도보 0분 (0m)" />
+
+        <TextView
+            android:id="@+id/rest_meta2"
+            style="@style/RestMeta"
+            android:text="주소" />
+    </LinearLayout>
+</LinearLayout>

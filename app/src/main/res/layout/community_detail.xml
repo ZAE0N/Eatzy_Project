@@ -64,10 +64,11 @@
                 android:paddingBottom="14dp">
 
                 <TextView
+                    android:id="@+id/post_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:text="강남역 혼밥 가능한 한식집 추천해요!"
+                    android:text="제목"
                     android:textColor="@color/gray_900"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -79,20 +80,22 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/post_avatar"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:layout_marginEnd="8dp"
                         android:background="@drawable/bg_avatar"
                         android:gravity="center"
-                        android:text="김"
+                        android:text="?"
                         android:textColor="@color/primary"
                         android:textSize="10sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/post_meta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="김점심 · 5분 전"
+                        android:text="작성자 · 방금 전"
                         android:textColor="@color/gray_400"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -111,11 +114,12 @@
                 android:padding="16dp">
 
                 <TextView
+                    android:id="@+id/post_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="12dp"
                     android:lineSpacingExtra="4dp"
-                    android:text="오늘 Eatzy 룰렛 돌렸더니 국밥 나왔는데 진짜 맛있었어요! 역삼동 쪽에 있는 국밥집인데 가격도 착하고 양도 많아요. 혼밥하기도 분위기 좋아서 강추합니다 ㅎㅎ"
+                    android:text="내용"
                     android:textColor="@color/gray_700"
                     android:textSize="13sp" />
 
@@ -165,29 +169,21 @@
 
                 <!-- 댓글 -->
                 <TextView
+                    android:id="@+id/comment_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
-                    android:text="댓글 8개"
+                    android:text="댓글 0개"
                     android:textColor="@color/gray_500"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
-                <LinearLayout style="@style/CommentItem">
-                    <TextView style="@style/CAvatar" android:text="박" />
-                    <LinearLayout style="@style/CBody">
-                        <TextView style="@style/CAuthor" android:text="박메뉴  3분 전" />
-                        <TextView style="@style/CText" android:text="저도 거기 갔었는데 진짜 맛있죠! 곱창 국밥 추천해요" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout style="@style/CommentItem">
-                    <TextView style="@style/CAvatar" android:text="이" />
-                    <LinearLayout style="@style/CBody">
-                        <TextView style="@style/CAuthor" android:text="이밥먹자  1분 전" />
-                        <TextView style="@style/CText" android:text="주소 좀 더 자세히 알 수 있을까요? ㅎㅎ" />
-                    </LinearLayout>
-                </LinearLayout>
+                <!-- 댓글은 CommunityDetailActivity 에서 동적 생성. -->
+                <LinearLayout
+                    android:id="@+id/comment_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

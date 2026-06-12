@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 최소 너비 600dp 이상(태블릿/폴더블 펼침 등): 컴포넌트를 키우고 여백을 넓힌다. -->
+<resources>
+    <!-- 상단바 -->
+    <dimen name="topbar_padding_h">32dp</dimen>
+    <dimen name="topbar_padding_top">20dp</dimen>
+    <dimen name="topbar_padding_bottom">16dp</dimen>
+    <dimen name="logo_chip_size">40dp</dimen>
+    <dimen name="logo_chip_text">18sp</dimen>
+    <dimen name="title_text">24sp</dimen>
+    <dimen name="icon_box_size">44dp</dimen>
+    <dimen name="icon_box_text">20sp</dimen>
+
+    <!-- 본문 -->
+    <dimen name="content_padding">32dp</dimen>
+    <dimen name="card_big_padding">28dp</dimen>
+    <dimen name="card_big_title">26sp</dimen>
+    <dimen name="card_small_padding">22dp</dimen>
+    <dimen name="card_gap">8dp</dimen>
+
+    <!-- 룰렛 FAB -->
+    <dimen name="fab_size">72dp</dimen>
+    <dimen name="fab_text">34sp</dimen>
+</resources>

@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eatzy — UI 목업</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary:    #38BDF8;
+  --primary-dk: #0EA5E9;
+  --primary-lt: #F0F9FF;
+  --primary-md: #BAE6FD;
+  --accent:     #7DD3FC;
+  --blue:       #3B82F6;
+  --green:      #22C55E;
+  --red:        #EF4444;
+  --bg:         #F0F9FF;
+  --surface:    #FFFFFF;
+  --gray-50:    #F9FAFB;
+  --gray-100:   #F3F4F6;
+  --gray-200:   #E5E7EB;
+  --gray-300:   #D1D5DB;
+  --gray-400:   #9CA3AF;
+  --gray-500:   #6B7280;
+  --gray-700:   #374151;
+  --gray-900:   #111827;
+}
+
+body {
+  background: #E0F2FE;
+  font-family: 'Noto Sans KR', sans-serif;
+  padding: 40px 20px 80px;
+  color: var(--gray-900);
+}
+
+/* ── PAGE HEADER ── */
+.page-header { text-align: center; margin-bottom: 52px; }
+.page-header .app-logo {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--primary);
+  border-radius: 18px;
+  padding: 10px 24px;
+  margin-bottom: 14px;
+}
+.page-header .app-logo span {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px; font-weight: 800;
+  color: white; letter-spacing: -1px;
+}
+.page-header h1 { font-size: 13px; color: var(--gray-500); letter-spacing: 0.08em; }
+
+/* ── SECTION LABEL ── */
+.sec-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--primary);
+  border-left: 3px solid var(--primary);
+  padding-left: 10px; margin: 52px 0 22px;
+}
+
+/* ── PHONE GRID ── */
+.phones { display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start; }
+.phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.phone-label {
+  font-size: 12px; font-weight: 700; color: var(--gray-500); text-align: center;
+}
+.phone-file { font-size: 10px; color: var(--gray-400); font-family: monospace; }
+
+/* ── PHONE FRAME ── */
+.phone {
+  width: 300px;
+  background: var(--surface);
+  border-radius: 40px;
+  border: 8px solid #1C1C2E;
+  box-shadow: 0 0 0 2px #2E2E42, 0 20px 60px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.1);
+  overflow: hidden;
+  position: relative;
+  display: flex; flex-direction: column;
+}
+.phone::before {
+  content: '';
+  display: block; width: 72px; height: 20px;
+  background: #1C1C2E;
+  border-radius: 0 0 12px 12px;
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  z-index: 10;
+}
+
+.screen {
+  flex: 1;
+  overflow-y: auto; overflow-x: hidden;
+  padding-top: 26px;
+  scrollbar-width: none;
+  background: var(--bg);
+}
+.screen::-webkit-scrollbar { display: none; }
+.screen.white-bg { background: #FFFFFF; }
+
+/* ── SHARED ── */
+.s-pad { padding: 0 20px; }
+.back { width: 34px; height: 34px; border-radius: 10px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 17px; cursor: pointer; flex-shrink: 0; }
+.s-head { display: flex; align-items: center; gap: 10px; padding: 10px 20px 6px; }
+
+.field-lbl { font-size: 11px; font-weight: 700; color: var(--gray-500); margin: 0 0 5px 2px; letter-spacing: 0.04em; }
+.inp {
+  width: 100%; height: 46px;
+  border: 1.5px solid var(--gray-200); border-radius: 14px;
+  padding: 0 16px; font-size: 14px;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--gray-700); background: var(--surface); outline: none;
+  margin-bottom: 12px; transition: border-color 0.2s;
+}
+.inp::placeholder { color: var(--gray-300); }
+.inp:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(56,189,248,0.1); }
+
+.btn-main {
+  width: 100%; height: 50px; border-radius: 14px; border: none;
+  background: var(--primary); color: white;
+  font-size: 15px; font-weight: 700;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer; margin-bottom: 10px;
+  transition: background 0.2s;
+}
+.btn-main:hover { background: var(--primary-dk); }
+.btn-outline {
+  width: 100%; height: 50px; border-radius: 14px;
+  border: 1.5px solid var(--gray-200); background: white;
+  color: var(--gray-700); font-size: 14px; font-weight: 700;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+  margin-bottom: 10px;
+}
+.divider-or { display: flex; align-items: center; gap: 10px; margin: 10px 0; font-size: 12px; color: var(--gray-400); }
+.divider-or::before, .divider-or::after { content: ''; flex: 1; height: 1px; background: var(--gray-200); }
+.inline-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 12px; }
+.inline-row .inp { margin-bottom: 0; flex: 1; }
+.btn-sm {
+  height: 46px; padding: 0 14px; border-radius: 14px; border: none;
+  background: var(--primary); color: white; font-size: 13px; font-weight: 700;
+  font-family: 'Noto Sans KR', sans-serif; cursor: pointer; white-space: nowrap;
+}
+
+/* ════════════════════════
+   1. LOGIN
+════════════════════════ */
+.login-logo {
+  width: 80px; height: 80px; border-radius: 22px;
+  background: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  margin: 18px auto 24px;
+  box-shadow: 0 8px 24px rgba(56,189,248,0.35);
+}
+.login-logo span { font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 800; color: white; letter-spacing: -1px; }
+.find-pw { font-size: 13px; color: var(--gray-400); text-align: center; margin-bottom: 12px; cursor: pointer; }
+.find-pw:hover { color: var(--primary); }
+.signup-row { display: flex; justify-content: center; gap: 4px; font-size: 13px; margin-top: 10px; }
+.signup-row span { color: var(--gray-400); }
+.signup-row a { color: var(--primary); font-weight: 700; text-decoration: none; }
+
+/* ════════════════════════
+   2. SIGN UP
+════════════════════════ */
+.verify-ok { font-size: 12px; color: var(--green); font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 4px; }
+.dropdown {
+  width: 100%; height: 46px; border: 1.5px solid var(--gray-200); border-radius: 14px;
+  padding: 0 16px; font-size: 14px; color: var(--gray-700); background: white;
+  appearance: none; margin-bottom: 12px; font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* ════════════════════════
+   3. FIND / RESET PW
+════════════════════════ */
+.notice { font-size: 12px; color: var(--primary); margin: 0 2px 12px; }
+.strength { font-size: 12px; margin: 0 2px 12px; }
+.strength.medium { color: #F59E0B; }
+.strength.strong { color: var(--green); }
+
+/* ════════════════════════
+   4. MAIN HOME
+════════════════════════ */
+.main-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 32px 16px 12px;
+  background: white;
+  border-bottom: 1px solid var(--gray-100);
+  position: sticky; top: 0; z-index: 5;
+}
+.topbar-logo { display: flex; align-items: center; gap: 8px; }
+.topbar-logo .logo-chip {
+  width: 30px; height: 30px; border-radius: 9px;
+  background: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+}
+.topbar-logo .logo-chip span { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 800; color: white; }
+.topbar-logo .app-name { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700; color: var(--gray-900); }
+.topbar-icon { width: 34px; height: 34px; border-radius: 10px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 17px; cursor: pointer; }
+
+.main-body { padding: 16px; }
+/* 2.1 맛집 추천 카드 — 큰 카드 */
+.big-card {
+  background: linear-gradient(135deg, #0284C7, #38BDF8);
+  border-radius: 20px; padding: 20px;
+  margin-bottom: 12px; color: white;
+  position: relative; overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(14,165,233,0.3);
+}
+.big-card::after {
+  content: '🍽️';
+  position: absolute; right: 16px; bottom: 8px; font-size: 60px; opacity: 0.2;
+}
+.big-card .card-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; opacity: 0.8; margin-bottom: 8px; }
+.big-card h3 { font-size: 19px; font-weight: 900; margin-bottom: 6px; }
+.big-card p { font-size: 13px; opacity: 0.85; line-height: 1.5; }
+.big-card .card-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: white; color: var(--primary);
+  border-radius: 10px; padding: 8px 16px;
+  font-size: 13px; font-weight: 700; margin-top: 14px;
+}
+/* 하단 2개 카드 */
+.small-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.small-card {
+  background: white; border-radius: 16px;
+  padding: 16px; cursor: pointer;
+  border: 1px solid var(--gray-100);
+  transition: transform 0.15s;
+}
+.small-card:hover { transform: translateY(-2px); }
+.small-card .card-icon { font-size: 24px; margin-bottom: 8px; }
+.small-card .card-num { font-size: 10px; font-weight: 700; color: var(--primary); letter-spacing: 0.08em; margin-bottom: 4px; }
+.small-card h4 { font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; }
+.small-card p { font-size: 11px; color: var(--gray-400); line-height: 1.4; }
+
+/* FAB 룰렛 버튼 */
+.fab {
+  position: sticky; bottom: 16px;
+  display: flex; justify-content: flex-end;
+  padding-right: 4px; margin-top: 8px;
+}
+.fab-btn {
+  width: 56px; height: 56px; border-radius: 18px;
+  background: var(--primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px;
+  box-shadow: 0 8px 24px rgba(56,189,248,0.45);
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s;
+}
+.fab-btn:hover { transform: scale(1.08); }
+
+/* ════════════════════════
+   5. 맛집 추천 (지도+리스트)
+════════════════════════ */
+.map-screen { background: #e8f0e9; }
+.search-bar-top {
+  display: flex; align-items: center; gap: 8px;
+  padding: 32px 14px 10px;
+  background: white;
+  position: sticky; top: 0; z-index: 5;
+  border-bottom: 1px solid var(--gray-100);
+}
+.search-inp {
+  flex: 1; height: 40px;
+  border: 1.5px solid var(--gray-200); border-radius: 12px;
+  padding: 0 14px; font-size: 14px;
+  font-family: 'Noto Sans KR', sans-serif;
+  outline: none; color: var(--gray-700);
+}
+.search-inp::placeholder { color: var(--gray-400); }
+/* 지도 영역 */
+.map-area {
+  height: 220px; background: #ddeedd;
+  position: relative; overflow: hidden;
+}
+.map-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(80,130,80,0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(80,130,80,0.1) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+.map-road { position: absolute; background: rgba(255,255,255,0.75); }
+.map-road.h { height: 9px; left: 0; right: 0; }
+.map-road.v { width: 9px; top: 0; bottom: 0; }
+.my-loc {
+  position: absolute; width: 14px; height: 14px; border-radius: 50%;
+  background: #3B82F6; border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(59,130,246,0.5);
+}
+.marker {
+  position: absolute;
+  display: flex; flex-direction: column; align-items: center;
+}
+.marker .pin {
+  width: 26px; height: 26px; border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.marker .pin span { transform: rotate(45deg); font-size: 11px; }
+
+/* 리스트 */
+.restaurant-list { background: white; }
+.rest-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--gray-100);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.rest-item:hover { background: var(--primary-lt); }
+.rest-thumb {
+  width: 52px; height: 52px; border-radius: 12px;
+  background: var(--primary-md);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.rest-info { flex: 1; }
+.rest-name { font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: 3px; }
+.rest-meta { font-size: 12px; color: var(--gray-400); line-height: 1.5; }
+.rest-tag {
+  font-size: 10px; font-weight: 700; color: var(--primary);
+  background: var(--primary-lt); padding: 2px 7px; border-radius: 6px;
+}
+
+/* ════════════════════════
+   6. 메뉴 사이드바
+════════════════════════ */
+.sidebar-screen { display: flex; height: 580px; }
+.sidebar-left {
+  width: 68%; border-right: 1px solid var(--gray-100);
+  display: flex; flex-direction: column;
+}
+.sidebar-header {
+  padding: 32px 14px 12px;
+  border-bottom: 1px solid var(--gray-100);
+  font-size: 18px; font-weight: 700;
+}
+.sidebar-menu { flex: 1; overflow-y: auto; padding: 10px 10px; }
+.menu-group-label { font-size: 10px; font-weight: 700; color: var(--gray-400); letter-spacing: 0.1em; padding: 8px 6px 4px; text-transform: uppercase; }
+.menu-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 10px; border-radius: 12px;
+  font-size: 13px; font-weight: 500; color: var(--gray-700);
+  cursor: pointer; margin-bottom: 2px;
+  transition: background 0.15s;
+}
+.menu-item:hover { background: var(--gray-100); }
+.menu-item.active { background: var(--primary-lt); color: var(--primary); font-weight: 700; }
+.menu-item .mi { font-size: 16px; flex-shrink: 0; }
+.sidebar-footer {
+  padding: 12px 10px;
+  border-top: 1px solid var(--gray-100);
+}
+.home-btn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px; border-radius: 12px;
+  font-size: 13px; font-weight: 700; color: var(--primary);
+  cursor: pointer; background: var(--primary-lt);
+}
+
+/* 우측 탭 */
+.sidebar-right {
+  width: 32%; display: flex; flex-direction: column;
+  padding: 44px 4px 10px;
+}
+.side-tab {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: var(--gray-400);
+  border-bottom: 1px solid var(--gray-100); gap: 4px; cursor: pointer;
+  padding: 14px 4px;
+}
+.side-tab:last-child { border-bottom: none; }
+.side-tab.active { color: var(--primary); }
+.side-tab .ti { font-size: 20px; }
+
+/* ════════════════════════
+   7. 커뮤니티 목록
+════════════════════════ */
+.comm-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 32px 16px 12px;
+  background: white; border-bottom: 1px solid var(--gray-100);
+  position: sticky; top: 0; z-index: 5;
+}
+.comm-title { font-size: 18px; font-weight: 700; }
+.write-btn {
+  width: 34px; height: 34px; border-radius: 10px;
+  background: var(--primary); display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: white; cursor: pointer;
+}
+.post-card {
+  background: white; padding: 14px 16px;
+  border-bottom: 1px solid var(--gray-100); cursor: pointer;
+  transition: background 0.15s;
+}
+.post-card:hover { background: var(--primary-lt); }
+.post-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--primary-md); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--primary); flex-shrink: 0; }
+.post-author { font-size: 12px; color: var(--gray-500); }
+.post-date { font-size: 11px; color: var(--gray-300); margin-left: auto; }
+.post-title { font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; }
+.post-preview { font-size: 12px; color: var(--gray-400); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.post-footer { display: flex; gap: 12px; margin-top: 8px; font-size: 11px; color: var(--gray-400); }
+.post-footer span { display: flex; align-items: center; gap: 3px; }
+
+/* ════════════════════════
+   8. 커뮤니티 상세
+════════════════════════ */
+.detail-head { padding: 10px 16px 14px; border-bottom: 1px solid var(--gray-100); }
+.detail-title { font-size: 18px; font-weight: 900; color: var(--gray-900); margin-bottom: 8px; line-height: 1.4; }
+.detail-meta { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--gray-400); }
+.detail-body { padding: 14px 16px; }
+.detail-text { font-size: 13px; color: var(--gray-700); line-height: 1.7; margin-bottom: 12px; }
+.detail-img { width: 100%; height: 130px; background: var(--primary-md); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 30px; margin-bottom: 14px; }
+.detail-divider { height: 1px; background: var(--gray-100); margin: 12px 0; }
+.comment-section { padding: 0 16px; }
+.comment-label { font-size: 12px; font-weight: 700; color: var(--gray-500); margin-bottom: 10px; }
+.comment-item { display: flex; gap: 8px; margin-bottom: 12px; }
+.c-avatar { width: 26px; height: 26px; border-radius: 50%; background: var(--gray-200); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: var(--gray-500); flex-shrink: 0; margin-top: 2px; }
+.c-body { flex: 1; }
+.c-author { font-size: 11px; font-weight: 700; color: var(--gray-700); margin-bottom: 2px; }
+.c-text { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
+.comment-input-bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px 16px;
+  background: white; border-top: 1px solid var(--gray-100);
+  position: sticky; bottom: 0;
+}
+.c-inp { flex: 1; height: 38px; border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 0 12px; font-size: 13px; font-family: 'Noto Sans KR', sans-serif; outline: none; color: var(--gray-700); }
+.c-inp::placeholder { color: var(--gray-300); }
+.c-send { width: 36px; height: 36px; border-radius: 10px; background: var(--primary); border: none; color: white; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+/* ════════════════════════
+   9. 니즈 설정
+════════════════════════ */
+.needs-head { padding: 32px 16px 12px; border-bottom: 1px solid var(--gray-100); background: white; }
+.needs-title { font-size: 18px; font-weight: 900; }
+.needs-body { padding: 16px; }
+.needs-section { margin-bottom: 20px; }
+.needs-section-title { font-size: 13px; font-weight: 700; color: var(--gray-700); margin-bottom: 10px; }
+/* 체크박스 칩들 */
+.chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.chip {
+  padding: 6px 13px; border-radius: 99px;
+  border: 1.5px solid var(--gray-200);
+  font-size: 12px; font-weight: 500; color: var(--gray-500);
+  cursor: pointer; background: white;
+  transition: all 0.15s;
+}
+.chip.on { background: var(--primary-lt); border-color: var(--primary); color: var(--primary); font-weight: 700; }
+/* 슬라이더 */
+.price-slider { width: 100%; margin: 6px 0; accent-color: var(--primary); }
+.price-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--gray-400); margin-top: 4px; }
+/* 알리르기 */
+.allergy-input { width: 100%; height: 42px; border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 0 14px; font-size: 13px; font-family: 'Noto Sans KR', sans-serif; outline: none; color: var(--gray-700); }
+.allergy-input::placeholder { color: var(--gray-300); }
+.allergy-hint { font-size: 11px; color: var(--gray-400); margin-top: 5px; }
+.save-btn-wrap { padding: 10px 16px 16px; background: white; border-top: 1px solid var(--gray-100); position: sticky; bottom: 0; }
+
+/* ── G icon ── */
+.g-svg { width: 18px; height: 18px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="app-logo"><span>Eatzy</span></div>
+  <h1>UI MOCKUP — ALL SCREENS</h1>
+</div>
+
+<!-- ══════════════════════════════
+     AUTH SCREENS
+══════════════════════════════ -->
+<div class="sec-label">Auth — 로그인 · 회원가입 · 비밀번호</div>
+<div class="phones">
+
+  <!-- 1. 로그인 -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="screen white-bg">
+        <div class="s-pad">
+          <div class="login-logo"><span>E</span></div>
+          <input class="inp" type="text" placeholder="ID">
+          <input class="inp" type="password" placeholder="Password">
+          <p class="find-pw">Find Password</p>
+          <button class="btn-main">Login</button>
+          <div class="divider-or">OR</div>
+          <button class="btn-outline">
+            <svg class="g-svg" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            Sign in with Google
+          </button>
+          <button class="btn-outline">Continue as Guest</button>
+          <div class="signup-row"><span>You Don't Have Account?</span><a href="#">Sign Up</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">1. 로그인</div>
+  </div>
+
+  <!-- 2. 회원가입 -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="screen white-bg">
+        <div class="s-pad" style="padding-top:8px;">
+          <div class="s-head" style="padding:8px 0 12px;"><div class="back">←</div></div>
+          <div style="font-size:22px;font-weight:900;margin-bottom:4px;">Create Account</div>
+          <div style="font-size:13px;color:var(--gray-400);margin-bottom:18px;">이메일로 간편하게 시작하세요.</div>
+          <div class="field-lbl">이메일 주소</div>
+          <div class="inline-row">
+            <input class="inp" type="email" placeholder="example@email.com">
+            <button class="btn-sm">인증 전송</button>
+          </div>
+          <p style="font-size:12px;color:var(--green);margin-bottom:10px;">✓ 인증 메일이 전송되었습니다.</p>
+          <div class="field-lbl">인증번호 <span style="font-size:10px;color:var(--green);background:#DCFCE7;padding:1px 6px;border-radius:4px;">전송됨</span></div>
+          <div class="inline-row">
+            <input class="inp" type="text" placeholder="6자리 입력">
+            <button class="btn-sm">확인</button>
+          </div>
+          <div class="verify-ok">✓ 이메일 인증 완료!</div>
+          <div class="field-lbl">비밀번호</div>
+          <input class="inp" type="password" placeholder="8자 이상, 특수문자 포함">
+          <div class="field-lbl">비밀번호 확인</div>
+          <input class="inp" type="password" placeholder="다시 입력">
+          <div class="field-lbl">기본 언어</div>
+          <select class="dropdown"><option>한국어</option><option>English</option></select>
+          <button class="btn-main">Sign Up</button>
+          <div class="signup-row"><span>이미 계정 있어요?</span><a href="#">Log in</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">2. 회원가입</div>
+  </div>
+
+  <!-- 3. 비밀번호 찾기 -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="screen white-bg">
+        <div class="s-pad" style="padding-top:8px;">
+          <div class="s-head" style="padding:8px 0 12px;"><div class="back">←</div></div>
+          <div style="font-size:22px;font-weight:900;margin-bottom:4px;">Find Password</div>
+          <div style="font-size:13px;color:var(--gray-400);margin-bottom:20px;">가입한 이메일 주소를 입력하면<br>인증 코드를 보내드릴게요.</div>
+          <div class="field-lbl">이메일 주소</div>
+          <div class="inline-row">
+            <input class="inp" type="email" placeholder="example@email.com">
+            <button class="btn-sm">Send</button>
+          </div>
+          <p class="notice">📩 인증 코드가 이메일로 발송되었습니다.</p>
+          <div class="field-lbl">인증번호</div>
+          <input class="inp" type="text" placeholder="6자리 코드 입력" maxlength="6">
+          <button class="btn-main">인증 확인</button>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">3. 비밀번호 찾기</div>
+  </div>
+
+  <!-- 4. 비밀번호 재설정 -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="screen white-bg">
+        <div class="s-pad" style="padding-top:8px;">
+          <div class="s-head" style="padding:8px 0 12px;"><div class="back">←</div></div>
+          <div style="font-size:22px;font-weight:900;margin-bottom:4px;">Reset Password</div>
+          <div style="font-size:13px;color:var(--gray-400);margin-bottom:20px;">8자 이상, 영문·숫자·특수문자 포함</div>
+          <div class="field-lbl">새 비밀번호</div>
+          <input class="inp" type="password" placeholder="새 비밀번호" oninput="chkStr(this.value)">
+          <div class="strength medium" id="str-txt">강도: 보통 ⚡</div>
+          <div class="field-lbl">새 비밀번호 확인</div>
+          <input class="inp" type="password" placeholder="다시 입력">
+          <button class="btn-main" style="margin-top:6px;">Change Password</button>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">4. 비밀번호 재설정</div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════
+     MAIN SCREENS
+══════════════════════════════ -->
+<div class="sec-label">Main — 홈 · 맛집 추천 · 사이드바</div>
+<div class="phones">
+
+  <!-- 5. 메인 홈 -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="screen">
+        <div class="main-topbar">
+          <div class="topbar-logo">
+            <div class="logo-chip"><span>E</span></div>
+            <div class="app-name">Eatzy</div>
+          </div>
+          <div style="display:flex;gap:6px;">
+            <div class="topbar-icon" onclick="openSidebar()">☰</div>
+            <div class="topbar-icon">🔔</div>
+          </div>
+        </div>
+        <div class="main-body">
+          <!-- 2.1 맛집 추천 큰 카드 -->
+          <div class="big-card">
+            <div class="card-tag">2.1 — 맛집 추천</div>
+            <h3>오늘 점심, 뭐 먹지?</h3>
+            <p>내 주변 맛집을 찾아<br>룰렛으로 결정해봐요!</p>
+            <div class="card-btn">🍽️ 추천 받기</div>
+          </div>
+          <!-- 2.2 니즈 설정 / 2.3 커뮤니티 -->
+          <div class="small-cards">
+            <div class="small-card">
+              <div class="card-icon">⚙️</div>
+              <div class="card-num">2.2</div>
+              <h4>니즈 설정</h4>
+              <p>음식 취향과 가격대 설정</p>
+            </div>
+            <div class="small-card">
+              <div class="card-icon">💬</div>
+              <div class="card-num">2.3</div>
+              <h4>커뮤니티</h4>
+              <p>맛집 리뷰 & 메뉴 토크</p>
+            </div>
+          </div>
+          <!-- 룰렛 FAB -->
+          <div class="fab">
+            <button class="fab-btn" title="룰렛 돌리기">🌀</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">5. 메인 홈 (☰ 누르면 사이드바)</div>
+  </div>
+
+  <!-- 6. 맛집 추천 (지도 + 리스트) -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="screen">
+        <div class="search-bar-top">
+          <div class="back">←</div>
+          <input class="search-inp" type="text" placeholder="🔍 식당 이름, 메뉴 검색">
+        </div>
+        <!-- 구글 지도 -->
+        <div class="map-area">
+          <div class="map-grid"></div>
+          <div class="map-road h" style="top:38%;"></div>
+          <div class="map-road h" style="top:65%;"></div>
+          <div class="map-road v" style="left:32%;"></div>
+          <div class="map-road v" style="left:66%;"></div>
+          <div class="my-loc" style="top:50%;left:49%;"></div>
+          <div class="marker" style="top:22%;left:20%;"><div class="pin" style="background:#38BDF8;"><span>🍜</span></div></div>
+          <div class="marker" style="top:18%;left:58%;"><div class="pin" style="background:#F59E0B;"><span>🍱</span></div></div>
+          <div class="marker" style="top:56%;left:70%;"><div class="pin" style="background:#10B981;"><span>☕</span></div></div>
+          <div class="marker" style="top:68%;left:20%;"><div class="pin" style="background:#8B5CF6;"><span>🍕</span></div></div>
+        </div>
+        <!-- 식당 리스트 -->
+        <div class="restaurant-list">
+          <div class="rest-item">
+            <div class="rest-thumb">🍜</div>
+            <div class="rest-info">
+              <div class="rest-name">맛있는 국밥집 <span class="rest-tag">한식</span></div>
+              <div class="rest-meta">⭐ 4.5 · 도보 3분 (250m)</div>
+              <div class="rest-meta">서울 강남구 역삼동 123</div>
+            </div>
+          </div>
+          <div class="rest-item">
+            <div class="rest-thumb">🍱</div>
+            <div class="rest-info">
+              <div class="rest-name">일본식 도시락 <span class="rest-tag">일식</span></div>
+              <div class="rest-meta">⭐ 4.3 · 도보 5분 (400m)</div>
+              <div class="rest-meta">서울 강남구 역삼동 456</div>
+            </div>
+          </div>
+          <div class="rest-item">
+            <div class="rest-thumb">☕</div>
+            <div class="rest-info">
+              <div class="rest-name">카페 브런치 <span class="rest-tag">양식</span></div>
+              <div class="rest-meta">⭐ 4.1 · 도보 6분 (500m)</div>
+              <div class="rest-meta">서울 강남구 역삼동 789</div>
+            </div>
+          </div>
+          <div class="rest-item">
+            <div class="rest-thumb">🍕</div>
+            <div class="rest-info">
+              <div class="rest-name">화덕 피자 <span class="rest-tag">양식</span></div>
+              <div class="rest-meta">⭐ 4.6 · 도보 8분 (650m)</div>
+              <div class="rest-meta">서울 강남구 역삼동 321</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">6. 맛집 추천 (지도 + 리스트)</div>
+  </div>
+
+  <!-- 7. 메뉴 사이드바 -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="screen" style="padding-top:0;background:white;">
+        <div class="sidebar-screen">
+          <!-- 왼쪽 메뉴 -->
+          <div class="sidebar-left">
+            <div class="sidebar-header">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:26px;height:26px;border-radius:8px;background:var(--primary);display:flex;align-items:center;justify-content:center;"><span style="font-family:'Outfit',sans-serif;font-size:13px;font-weight:800;color:white;">E</span></div>
+                <span style="font-family:'Outfit',sans-serif;font-size:16px;font-weight:700;">Eatzy</span>
+              </div>
+            </div>
+            <div class="sidebar-menu">
+              <div class="menu-group-label">기본</div>
+              <div class="menu-item active"><span class="mi">🍽️</span> 맛집 추천</div>
+              <div class="menu-item"><span class="mi">⚙️</span> 니즈 설정</div>
+              <div class="menu-group-label">기타</div>
+              <div class="menu-item"><span class="mi">💬</span> 커뮤니티</div>
+              <div class="menu-item"><span class="mi">⭐</span> 즐겨찾기</div>
+              <div class="menu-item"><span class="mi">🚫</span> 블랙리스트</div>
+              <div class="menu-item"><span class="mi">🔔</span> 알림</div>
+            </div>
+            <div class="sidebar-footer">
+              <div class="home-btn">🏠 홈화면</div>
+            </div>
+          </div>
+          <!-- 오른쪽 탭 -->
+          <div class="sidebar-right">
+            <div class="side-tab active">
+              <span>기</span><span>본</span>
+            </div>
+            <div class="side-tab">
+              <span>외</span><span>부</span><span>메</span><span>뉴</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">7. 메뉴 사이드바</div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════
+     COMMUNITY
+══════════════════════════════ -->
+<div class="sec-label">Community — 커뮤니티 목록 · 게시글 상세</div>
+<div class="phones">
+
+  <!-- 8. 커뮤니티 목록 -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="screen">
+        <div class="comm-topbar">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div class="back">←</div>
+            <span class="comm-title">커뮤니티</span>
+          </div>
+          <div class="write-btn">✏️</div>
+        </div>
+        <div class="post-card">
+          <div class="post-header">
+            <div class="avatar">김</div>
+            <div class="post-author">김점심</div>
+            <div class="post-date">5분 전</div>
+          </div>
+          <div class="post-title">강남역 혼밥 가능한 한식집 추천해요!</div>
+          <div class="post-preview">오늘 룰렛 돌렸더니 국밥 나왔는데 진짜 맛있었어요. 역삼동 국밥집 강추합니다 ㅎㅎ 가격도 착하고...</div>
+          <div class="post-footer">
+            <span>❤️ 24</span><span>💬 8</span><span>👁 103</span>
+          </div>
+        </div>
+        <div class="post-card">
+          <div class="post-header">
+            <div class="avatar" style="background:#DCFCE7;color:#16A34A;">박</div>
+            <div class="post-author">박메뉴</div>
+            <div class="post-date">22분 전</div>
+          </div>
+          <div class="post-title">룰렛이 맨날 일식 나오는 사람 있어요?</div>
+          <div class="post-preview">니즈 설정에서 일식 체크 해제해도 자꾸 나오는 것 같은데.. 저만 그런가요 😅</div>
+          <div class="post-footer"><span>❤️ 11</span><span>💬 15</span><span>👁 67</span></div>
+        </div>
+        <div class="post-card">
+          <div class="post-header">
+            <div class="avatar" style="background:#EDE9FE;color:#7C3AED;">이</div>
+            <div class="post-author">이밥먹자</div>
+            <div class="post-date">1시간 전</div>
+          </div>
+          <div class="post-title">분식집인데 파스타도 팔아요 ㄷㄷ</div>
+          <div class="post-preview">오늘 룰렛 결과로 간 집인데 메뉴판 보고 깜짝 놀랐습니다 진짜 퓨전 그 자체...</div>
+          <div class="post-footer"><span>❤️ 38</span><span>💬 20</span><span>👁 245</span></div>
+        </div>
+        <div class="post-card">
+          <div class="post-header">
+            <div class="avatar" style="background:#FEF3C7;color:#D97706;">최</div>
+            <div class="post-author">최뭐먹지</div>
+            <div class="post-date">3시간 전</div>
+          </div>
+          <div class="post-title">점심 예산 8천원으로 먹을 수 있는 메뉴들</div>
+          <div class="post-preview">요즘 물가 오르면서 8천원 이하로 배부르게 먹기 힘들더라고요. 그래도 찾아보니...</div>
+          <div class="post-footer"><span>❤️ 52</span><span>💬 31</span><span>👁 512</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">8. 커뮤니티 목록</div>
+  </div>
+
+  <!-- 9. 커뮤니티 상세 -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="screen">
+        <div class="s-head" style="padding:32px 16px 8px;border-bottom:1px solid var(--gray-100);background:white;position:sticky;top:0;z-index:5;">
+          <div class="back">←</div>
+          <span style="font-size:15px;font-weight:700;">게시글</span>
+        </div>
+        <div class="detail-head">
+          <div class="detail-title">강남역 혼밥 가능한 한식집 추천해요!</div>
+          <div class="detail-meta">
+            <div class="avatar" style="width:22px;height:22px;font-size:10px;">김</div>
+            <span>김점심</span> · <span>5분 전</span>
+          </div>
+        </div>
+        <div class="detail-body">
+          <div class="detail-text">오늘 Eatzy 룰렛 돌렸더니 국밥 나왔는데 진짜 맛있었어요! 역삼동 쪽에 있는 국밥집인데 가격도 착하고 양도 많아요. 혼밥하기도 분위기 좋아서 강추합니다 ㅎㅎ</div>
+          <div class="detail-img">🍲</div>
+          <div style="display:flex;gap:14px;font-size:12px;color:var(--gray-400);">
+            <span style="display:flex;align-items:center;gap:4px;cursor:pointer;"><span style="font-size:18px;">❤️</span> 24</span>
+            <span style="display:flex;align-items:center;gap:4px;cursor:pointer;"><span style="font-size:18px;">🔖</span> 저장</span>
+            <span style="display:flex;align-items:center;gap:4px;cursor:pointer;color:var(--red);"><span style="font-size:16px;">🚩</span> 신고</span>
+          </div>
+          <div class="detail-divider"></div>
+          <div class="comment-section">
+            <div class="comment-label">댓글 8개</div>
+            <div class="comment-item">
+              <div class="c-avatar">박</div>
+              <div class="c-body">
+                <div class="c-author">박메뉴 <span style="font-size:10px;color:var(--gray-300);margin-left:4px;">3분 전</span></div>
+                <div class="c-text">저도 거기 갔었는데 진짜 맛있죠! 곱창 국밥 추천해요</div>
+              </div>
+            </div>
+            <div class="comment-item">
+              <div class="c-avatar" style="background:#EDE9FE;color:#7C3AED;">이</div>
+              <div class="c-body">
+                <div class="c-author">이밥먹자 <span style="font-size:10px;color:var(--gray-300);margin-left:4px;">1분 전</span></div>
+                <div class="c-text">주소 좀 더 자세히 알 수 있을까요? ㅎㅎ</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="comment-input-bar">
+          <input class="c-inp" placeholder="댓글을 입력하세요 (악플 해시)">
+          <button class="c-send">▶</button>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">9. 커뮤니티 상세</div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════
+     PREFERENCES
+══════════════════════════════ -->
+<div class="sec-label">Preferences — 니즈 설정</div>
+<div class="phones">
+
+  <!-- 10. 니즈 설정 -->
+  <div class="phone-wrap">
+    <div class="phone">
+      <div class="screen">
+        <div class="needs-head">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+            <div class="back">←</div>
+            <span class="needs-title">니즈 설정</span>
+          </div>
+          <div style="font-size:12px;color:var(--gray-400);">내 취향에 맞는 맛집만 추천받아요</div>
+        </div>
+        <div class="needs-body">
+          <!-- 음식 종류 -->
+          <div class="needs-section">
+            <div class="needs-section-title">🍱 음식 종류</div>
+            <div class="chips">
+              <div class="chip on" onclick="this.classList.toggle('on')">한식</div>
+              <div class="chip" onclick="this.classList.toggle('on')">일식</div>
+              <div class="chip on" onclick="this.classList.toggle('on')">양식</div>
+              <div class="chip" onclick="this.classList.toggle('on')">중식</div>
+              <div class="chip on" onclick="this.classList.toggle('on')">분식</div>
+              <div class="chip" onclick="this.classList.toggle('on')">패스트푸드</div>
+              <div class="chip" onclick="this.classList.toggle('on')">아시안</div>
+            </div>
+          </div>
+          <!-- 주재료 -->
+          <div class="needs-section">
+            <div class="needs-section-title">🌾 주재료</div>
+            <div class="chips">
+              <div class="chip on" onclick="this.classList.toggle('on')">밥</div>
+              <div class="chip" onclick="this.classList.toggle('on')">빵</div>
+              <div class="chip on" onclick="this.classList.toggle('on')">면</div>
+              <div class="chip" onclick="this.classList.toggle('on')">무탄수</div>
+            </div>
+          </div>
+          <!-- 가격대 -->
+          <div class="needs-section">
+            <div class="needs-section-title">💰 가격대</div>
+            <input class="price-slider" type="range" min="3000" max="30000" value="15000" step="1000">
+            <div class="price-labels"><span>3,000원</span><span>~15,000원</span><span>30,000원</span></div>
+          </div>
+          <!-- 알리르기 -->
+          <div class="needs-section">
+            <div class="needs-section-title">🚨 알리르기 / 기피 메뉴</div>
+            <input class="allergy-input" type="text" placeholder="알리르기 없으면 직접 적어주세요">
+            <div class="allergy-hint">예: 갑각류, 땅콩, 돼지고기 등</div>
+          </div>
+        </div>
+        <div class="save-btn-wrap">
+          <button class="btn-main">설정 저장</button>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">10. 니즈 설정</div>
+  </div>
+
+</div>
+
+<!-- 사이드바 드로어 오버레이 -->
+<div id="overlay" onclick="closeSidebar()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:100;"></div>
+<div id="sidebar-drawer" style="display:none;position:fixed;top:0;left:0;width:260px;height:100%;background:white;z-index:101;box-shadow:4px 0 24px rgba(0,0,0,0.15);padding:0;flex-direction:column;">
+  <div style="padding:50px 18px 14px;border-bottom:1px solid #F3F4F6;display:flex;align-items:center;gap:10px;">
+    <div style="width:30px;height:30px;border-radius:9px;background:var(--primary);display:flex;align-items:center;justify-content:center;"><span style="font-family:'Outfit',sans-serif;font-size:15px;font-weight:800;color:white;">E</span></div>
+    <span style="font-family:'Outfit',sans-serif;font-size:18px;font-weight:700;">Eatzy</span>
+  </div>
+  <div style="padding:10px 10px;flex:1;">
+    <div style="font-size:10px;font-weight:700;color:#9CA3AF;padding:8px 6px 4px;text-transform:uppercase;letter-spacing:0.1em;">기본</div>
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 10px;border-radius:12px;font-size:14px;cursor:pointer;background:var(--primary-lt);color:var(--primary);font-weight:700;margin-bottom:2px;">🍽️ 맛집 추천</div>
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 10px;border-radius:12px;font-size:14px;cursor:pointer;color:#374151;margin-bottom:2px;" onmouseover="this.style.background='#F3F4F6'" onmouseout="this.style.background='transparent'">⚙️ 니즈 설정</div>
+    <div style="font-size:10px;font-weight:700;color:#9CA3AF;padding:8px 6px 4px;text-transform:uppercase;letter-spacing:0.1em;">기타</div>
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 10px;border-radius:12px;font-size:14px;cursor:pointer;color:#374151;margin-bottom:2px;" onmouseover="this.style.background='#F3F4F6'" onmouseout="this.style.background='transparent'">💬 커뮤니티</div>
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 10px;border-radius:12px;font-size:14px;cursor:pointer;color:#374151;margin-bottom:2px;" onmouseover="this.style.background='#F3F4F6'" onmouseout="this.style.background='transparent'">⭐ 즐겨찾기</div>
+    <div style="display:flex;align-items:center;gap:10px;padding:12px 10px;border-radius:12px;font-size:14px;cursor:pointer;color:#374151;margin-bottom:2px;" onmouseover="this.style.background='#F3F4F6'" onmouseout="this.style.background='transparent'">🚫 블랙리스트</div>
+  </div>
+  <div style="padding:12px 10px;border-top:1px solid #F3F4F6;">
+    <div style="display:flex;align-items:center;gap:8px;padding:12px;border-radius:12px;font-size:13px;font-weight:700;color:var(--primary);background:var(--primary-lt);cursor:pointer;">🏠 홈화면</div>
+  </div>
+</div>
+
+<script>
+function openSidebar() {
+  document.getElementById('overlay').style.display = 'block';
+  const d = document.getElementById('sidebar-drawer');
+  d.style.display = 'flex';
+}
+function closeSidebar() {
+  document.getElementById('overlay').style.display = 'none';
+  document.getElementById('sidebar-drawer').style.display = 'none';
+}
+function chkStr(v) {
+  const el = document.getElementById('str-txt');
+  if (!v) { el.textContent = ''; return; }
+  const s = [v.length>=8, /[a-zA-Z]/.test(v), /[0-9]/.test(v), /[!@#$%^&*]/.test(v)].filter(Boolean).length;
+  if (s<=2) { el.className='strength'; el.style.color='#EF4444'; el.textContent='강도: 약함 ⚠️'; }
+  else if (s===3) { el.className='strength medium'; el.style.color=''; el.textContent='강도: 보통 ⚡'; }
+  else { el.className='strength strong'; el.style.color=''; el.textContent='강도: 강함 ✅'; }
+}
+</script>
+</body>
+</html>

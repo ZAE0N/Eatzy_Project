@@ -1,8 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Eatzy_Project" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Base.Theme.Eatzy_Project" parent="Theme.Material3.Light.NoActionBar">
+        <!-- 스카이 라이트 테마 고정 (다크모드로 색 뒤집힘 방지). -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- 버튼이 우리 background 드로어블을 그대로 쓰도록 Material 버튼 스타일 해제 -->
+        <item name="buttonStyle">@style/Widget.AppCompat.Button</item>
     </style>
 
     <style name="Theme.Eatzy_Project" parent="Base.Theme.Eatzy_Project" />

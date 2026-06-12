@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FindPasswordActivity extends AppCompatActivity {
@@ -13,7 +14,9 @@ public class FindPasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.find_password);
+        UiInsets.apply(this);
 
         TextView btnBack = findViewById(R.id.btn_back);
         Button btnSend = findViewById(R.id.btn_send);

@@ -58,64 +58,11 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
+        <!-- 게시글은 CommunityListActivity 에서 Firebase posts 로 동적 생성. -->
         <LinearLayout
+            android:id="@+id/list_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <!-- 게시글 1 -->
-            <LinearLayout android:id="@+id/post_1" style="@style/PostCard">
-                <LinearLayout style="@style/PostHeader">
-                    <TextView style="@style/Avatar" android:text="김" />
-                    <TextView style="@style/PostAuthor" android:text="김점심" />
-                    <TextView style="@style/PostDate" android:text="5분 전" />
-                </LinearLayout>
-                <TextView style="@style/PostTitle" android:text="강남역 혼밥 가능한 한식집 추천해요!" />
-                <TextView style="@style/PostPreview" android:text="오늘 룰렛 돌렸더니 국밥 나왔는데 진짜 맛있었어요. 역삼동 국밥집 강추합니다 ㅎㅎ 가격도 착하고..." />
-                <TextView style="@style/PostFooter" android:text="❤️ 24    💬 8    👁 103" />
-            </LinearLayout>
-
-            <View style="@style/PostDivider" />
-
-            <!-- 게시글 2 -->
-            <LinearLayout android:id="@+id/post_2" style="@style/PostCard">
-                <LinearLayout style="@style/PostHeader">
-                    <TextView style="@style/Avatar" android:text="박" />
-                    <TextView style="@style/PostAuthor" android:text="박메뉴" />
-                    <TextView style="@style/PostDate" android:text="22분 전" />
-                </LinearLayout>
-                <TextView style="@style/PostTitle" android:text="룰렛이 맨날 일식 나오는 사람 있어요?" />
-                <TextView style="@style/PostPreview" android:text="니즈 설정에서 일식 체크 해제해도 자꾸 나오는 것 같은데.. 저만 그런가요 😅" />
-                <TextView style="@style/PostFooter" android:text="❤️ 11    💬 15    👁 67" />
-            </LinearLayout>
-
-            <View style="@style/PostDivider" />
-
-            <!-- 게시글 3 -->
-            <LinearLayout android:id="@+id/post_3" style="@style/PostCard">
-                <LinearLayout style="@style/PostHeader">
-                    <TextView style="@style/Avatar" android:text="이" />
-                    <TextView style="@style/PostAuthor" android:text="이밥먹자" />
-                    <TextView style="@style/PostDate" android:text="1시간 전" />
-                </LinearLayout>
-                <TextView style="@style/PostTitle" android:text="분식집인데 파스타도 팔아요 ㄷㄷ" />
-                <TextView style="@style/PostPreview" android:text="오늘 룰렛 결과로 간 집인데 메뉴판 보고 깜짝 놀랐습니다 진짜 퓨전 그 자체..." />
-                <TextView style="@style/PostFooter" android:text="❤️ 38    💬 20    👁 245" />
-            </LinearLayout>
-
-            <View style="@style/PostDivider" />
-
-            <!-- 게시글 4 -->
-            <LinearLayout android:id="@+id/post_4" style="@style/PostCard">
-                <LinearLayout style="@style/PostHeader">
-                    <TextView style="@style/Avatar" android:text="최" />
-                    <TextView style="@style/PostAuthor" android:text="최뭐먹지" />
-                    <TextView style="@style/PostDate" android:text="3시간 전" />
-                </LinearLayout>
-                <TextView style="@style/PostTitle" android:text="점심 예산 8천원으로 먹을 수 있는 메뉴들" />
-                <TextView style="@style/PostPreview" android:text="요즘 물가 오르면서 8천원 이하로 배부르게 먹기 힘들더라고요. 그래도 찾아보니..." />
-                <TextView style="@style/PostFooter" android:text="❤️ 52    💬 31    👁 512" />
-            </LinearLayout>
-        </LinearLayout>
+            android:orientation="vertical" />
     </ScrollView>
 </LinearLayout>

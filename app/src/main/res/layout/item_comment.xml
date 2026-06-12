@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 댓글 한 줄. CommunityDetailActivity 에서 댓글 수만큼 inflate. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CommentItem">
+
+    <TextView android:id="@+id/c_avatar" style="@style/CAvatar" android:text="?" />
+
+    <LinearLayout style="@style/CBody">
+        <TextView android:id="@+id/c_author" style="@style/CAuthor" android:text="작성자  방금 전" />
+        <TextView android:id="@+id/c_text" style="@style/CText" android:text="댓글" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -8,56 +9,60 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!-- 상단바 -->
-    <LinearLayout
+    <!-- 상단바: ☰(사이드바) 왼쪽 상단 / 로고+앱이름 정중앙
+         ConstraintLayout 이라 로고가 항상 화면 정중앙에 온다. -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="12dp">
+        android:paddingHorizontal="@dimen/topbar_padding_h"
+        android:paddingTop="@dimen/topbar_padding_top"
+        android:paddingBottom="@dimen/topbar_padding_bottom">
 
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/bg_logo_chip"
-            android:gravity="center"
-            android:text="E"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="8dp"
-            android:text="Eatzy"
-            android:textColor="@color/gray_900"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
+        <!-- 왼쪽 상단: 사이드바 버튼 -->
         <TextView
             android:id="@+id/btn_menu"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_marginEnd="6dp"
+            android:layout_width="@dimen/icon_box_size"
+            android:layout_height="@dimen/icon_box_size"
             android:background="@drawable/bg_icon_box"
             android:gravity="center"
             android:text="☰"
-            android:textSize="17sp" />
+            android:textSize="@dimen/icon_box_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/btn_noti"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:background="@drawable/bg_icon_box"
-            android:gravity="center"
-            android:text="🔔"
-            android:textSize="15sp" />
-    </LinearLayout>
+        <!-- 정중앙: 로고(E) + 앱 이름(Eatzy) -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                style="@style/LogoOutfit"
+                android:layout_width="@dimen/logo_chip_size"
+                android:layout_height="@dimen/logo_chip_size"
+                android:background="@drawable/bg_logo_chip"
+                android:gravity="center"
+                android:text="E"
+                android:textColor="@color/white"
+                android:textSize="@dimen/logo_chip_text" />
+
+            <TextView
+                style="@style/LogoOutfit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Eatzy"
+                android:textColor="@color/gray_900"
+                android:textSize="@dimen/title_text" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -69,7 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="@dimen/content_padding">
 
             <!-- 맛집 추천 큰 카드 -->
             <LinearLayout
@@ -78,8 +83,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/bg_card_big"
+                android:elevation="8dp"
                 android:orientation="vertical"
-                android:padding="20dp">
+                android:padding="@dimen/card_big_padding">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -97,7 +103,7 @@
                     android:layout_marginBottom="6dp"
                     android:text="오늘 점심, 뭐 먹지?"
                     android:textColor="@color/white"
-                    android:textSize="19sp"
+                    android:textSize="@dimen/card_big_title"
                     android:textStyle="bold" />
 
                 <TextView
@@ -133,10 +139,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginEnd="5dp"
+                    android:layout_marginEnd="@dimen/card_gap"
                     android:background="@drawable/bg_card_small"
+                    android:elevation="2dp"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="@dimen/card_small_padding">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -176,10 +183,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:layout_marginStart="5dp"
+                    android:layout_marginStart="@dimen/card_gap"
                     android:background="@drawable/bg_card_small"
+                    android:elevation="2dp"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="@dimen/card_small_padding">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -223,13 +231,14 @@
             <!-- 룰렛 FAB -->
             <TextView
                 android:id="@+id/fab_roulette"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
+                android:layout_width="@dimen/fab_size"
+                android:layout_height="@dimen/fab_size"
                 android:layout_gravity="end"
                 android:background="@drawable/bg_fab"
+                android:elevation="8dp"
                 android:gravity="center"
                 android:text="🌀"
-                android:textSize="26sp" />
+                android:textSize="@dimen/fab_text" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

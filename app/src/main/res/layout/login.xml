@@ -18,18 +18,18 @@
 
         <!-- 로고 -->
         <TextView
+            style="@style/LogoOutfit"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="18dp"
             android:layout_marginBottom="24dp"
             android:background="@drawable/bg_logo"
-            android:fontFamily="sans-serif-black"
+            android:elevation="8dp"
             android:gravity="center"
             android:text="E"
             android:textColor="@color/white"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:textSize="26sp" />
 
         <!-- ID 입력 -->
         <EditText
@@ -74,7 +74,7 @@
             android:textSize="13sp" />
 
         <!-- 로그인 버튼 -->
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -116,7 +116,7 @@
         </LinearLayout>
 
         <!-- 구글 로그인 -->
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_google"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -133,7 +133,7 @@
             android:textStyle="bold" />
 
         <!-- 게스트로 계속 -->
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_guest"
             android:layout_width="match_parent"
             android:layout_height="50dp"

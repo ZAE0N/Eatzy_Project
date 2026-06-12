@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eatzy Design Prototype</title>
+<style>
+  /* 폰트 설정: 로고는 둥글고 귀여운 Nunito, 본문은 본고딕 */
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&family=Noto+Sans+KR:wght@500;700&display=swap');
+
+  :root {
+    --primary: #4CA1AF;       /* 시그니처 하늘색 */
+    --primary-light: #E0F2F4; /* 룰렛 교차용 연한 하늘색 */
+    --bg: #F8F9FA;            /* 앱 배경색 (약간 쿨톤의 화이트) */
+    --text-dark: #1A2940;     /* 텍스트 딥 네이비 */
+    --white: #FFFFFF;
+  }
+
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #D3DCE6; /* 화면 바깥 배경 */
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+
+  /* 스마트폰 화면 프레임 */
+  .mobile-frame {
+    width: 375px;
+    height: 750px;
+    background-color: var(--bg);
+    border-radius: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 8px solid white;
+  }
+
+  /* 상단 헤더 & 로고 영역 */
+  .header {
+    padding: 50px 24px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    border-bottom: 1px solid rgba(0,0,0,0.03);
+  }
+  
+  .logo {
+    font-family: 'Nunito', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-dark);
+    letter-spacing: -0.5px;
+  }
+  
+  /* 마지막 y자에만 하늘색 포인트! */
+  .logo span {
+    color: var(--primary);
+  }
+
+  /* 프로필 아이콘 (임시) */
+  .profile-icon {
+    width: 36px;
+    height: 36px;
+    background-color: var(--primary-light);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary);
+  }
+
+  /* 메인 콘텐츠 영역 */
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 24px;
+  }
+
+  .title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: #6C757D;
+    margin-bottom: 50px;
+  }
+
+  /* 룰렛 디자인 */
+  .roulette-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin-bottom: 60px;
+  }
+
+  /* 스카이블루-화이트 모노톤 룰렛판 */
+  .roulette-wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid var(--white);
+    box-shadow: 0 15px 25px rgba(76, 161, 175, 0.15);
+    background: conic-gradient(
+      var(--white) 0deg 60deg,
+      var(--primary-light) 60deg 120deg,
+      var(--white) 120deg 180deg,
+      var(--primary) 180deg 240deg,
+      var(--white) 240deg 300deg,
+      var(--primary-light) 300deg 360deg
+    );
+    transition: transform 3s cubic-bezier(0.15, 0.85, 0.3, 1);
+    overflow: hidden;
+  }
+
+  /* 화살표 핀 (딥 네이비) */
+  .marker {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 24px solid var(--text-dark);
+    z-index: 10;
+  }
+
+  /* 룰렛 중앙 축 */
+  .center-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    background-color: var(--white);
+    border: 4px solid var(--text-dark);
+    border-radius: 50%;
+    z-index: 5;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  /* 하단 메인 액션 버튼 */
+  .spin-btn {
+    background-color: var(--primary);
+    color: var(--white);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    width: 100%;
+    padding: 18px 0;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 10px 20px rgba(76, 161, 175, 0.3);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .spin-btn:active {
+    transform: scale(0.95);
+    background-color: #3b8a97;
+  }
+</style>
+</head>
+<body>
+
+<div class="mobile-frame">
+  <div class="header">
+    <div class="logo">Eatz<span>y</span></div>
+    <div class="profile-icon">
+      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+      </svg>
+    </div>
+  </div>
+  
+  <div class="content">
+    <div class="title">오늘 점심은 뭘 먹을까요?</div>
+    <div class="subtitle">고민은 저희가 할게요! 가볍게 돌려주세요.</div>
+    
+    <div class="roulette-container">
+      <div class="marker"></div>
+      <div class="roulette-wheel" id="wheel"></div>
+      <div class="center-dot"></div>
+    </div>
+    
+    <button class="spin-btn" onclick="spinWheel()">룰렛 돌리기</button>
+  </div>
+</div>
+
+<script>
+  let currentRotation = 0;
+  function spinWheel() {
+    const wheel = document.getElementById('wheel');
+    // 최소 4바퀴(1440도) 이상 무작위로 회전하도록 설정
+    const randomDegree = Math.floor(Math.random() * 360) + 1440; 
+    currentRotation += randomDegree;
+    wheel.style.transform = `rotate(${currentRotation}deg)`;
+  }
+</script>
+</body>
+</html>

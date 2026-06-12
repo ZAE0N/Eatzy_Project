@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Eatzy_Project</string>
+
+    <!-- reCAPTCHA Enterprise 사이트 키.
+         Google Cloud Console → 보안 → reCAPTCHA Enterprise 에서 Android 키를 만들어 교체.
+         이 placeholder("YOUR_...") 이면 RecaptchaHelper 가 검증을 건너뛰고 통과시킨다(키 없는 개발 단계). -->
+    <string name="recaptcha_site_key">6LfwIRUtAAAAAJQ0nCNqYmXuSJ5p8YPTenvrBFhM</string>
 </resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 가로모드(폰): 세로 여백을 줄여 화면을 넓게 쓰고, 좌우 여백은 키운다. -->
+<resources>
+    <dimen name="topbar_padding_top">10dp</dimen>
+    <dimen name="topbar_padding_bottom">8dp</dimen>
+    <dimen name="content_padding">20dp</dimen>
+</resources>

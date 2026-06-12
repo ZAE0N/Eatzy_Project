@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  화면 크기별 공통 치수. 기본값(폰 세로) 정의.
+  - values-sw600dp/dimens.xml : 태블릿/대화면에서 더 크게
+  - values-land/dimens.xml     : 가로모드에서 여백 조정
+  레이아웃은 이 이름들만 참조하므로, 값만 바꾸면 모든 화면 크기에 반영된다.
+-->
+<resources>
+    <!-- 상단바 -->
+    <dimen name="topbar_padding_h">16dp</dimen>
+    <dimen name="topbar_padding_top">16dp</dimen>
+    <dimen name="topbar_padding_bottom">12dp</dimen>
+    <dimen name="logo_chip_size">30dp</dimen>
+    <dimen name="logo_chip_text">14sp</dimen>
+    <dimen name="title_text">18sp</dimen>
+    <dimen name="icon_box_size">34dp</dimen>
+    <dimen name="icon_box_text">16sp</dimen>
+
+    <!-- 본문 -->
+    <dimen name="content_padding">16dp</dimen>
+    <dimen name="card_big_padding">20dp</dimen>
+    <dimen name="card_big_title">19sp</dimen>
+    <dimen name="card_small_padding">16dp</dimen>
+    <dimen name="card_gap">5dp</dimen>
+
+    <!-- 룰렛 FAB -->
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="fab_text">26sp</dimen>
+</resources>

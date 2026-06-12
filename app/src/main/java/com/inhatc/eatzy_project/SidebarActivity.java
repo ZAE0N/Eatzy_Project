@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SidebarActivity extends AppCompatActivity {
@@ -11,7 +12,9 @@ public class SidebarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.sidebar);
+        UiInsets.apply(this);
 
         TextView btnHome = findViewById(R.id.btn_home);
         TextView menuRecommend = findViewById(R.id.menu_recommend);
