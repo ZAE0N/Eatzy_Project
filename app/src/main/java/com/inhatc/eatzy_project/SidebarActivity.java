@@ -20,6 +20,7 @@ public class SidebarActivity extends AppCompatActivity {
         TextView menuRecommend = findViewById(R.id.menu_recommend);
         TextView menuNeeds = findViewById(R.id.menu_needs);
         TextView menuCommunity = findViewById(R.id.menu_community);
+        TextView menuWishlist = findViewById(R.id.menu_wishlist);
 
         // 홈화면으로 (사이드바 닫기)
         btnHome.setOnClickListener(v -> finish());
@@ -36,6 +37,11 @@ public class SidebarActivity extends AppCompatActivity {
 
         menuCommunity.setOnClickListener(v -> {
             startActivity(new Intent(this, CommunityListActivity.class));
+            finish();
+        });
+
+        menuWishlist.setOnClickListener(v -> {
+            startActivity(new Intent(this, WishlistActivity.class));
             finish();
         });
     }

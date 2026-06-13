@@ -38,6 +38,10 @@
         <activity android:name=".SidebarActivity" android:exported="false" />
         <activity android:name=".CommunityListActivity" android:exported="false" />
         <activity android:name=".CommunityDetailActivity" android:exported="false" />
+        <activity android:name=".CommunityWriteActivity" android:exported="false" />
+        <activity android:name=".PostMapActivity" android:exported="false" />
+        <activity android:name=".LocationPickerActivity" android:exported="false" />
+        <activity android:name=".WishlistActivity" android:exported="false" />
         <activity android:name=".NeedsSettingsActivity" android:exported="false" />
         <activity android:name=".RouletteActivity" android:exported="false" />
     </application>

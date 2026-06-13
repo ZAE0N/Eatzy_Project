@@ -21,7 +21,7 @@ local.properties
 *.iws
 *.ipr
 
-# ───────── 민감 정보 (절대 커밋 금지) ─────────
+# ───────── 민감 정보 ─────────
 # Firebase 프로젝트 설정 — API 키/프로젝트 정보 포함
 google-services.json
 app/google-services.json

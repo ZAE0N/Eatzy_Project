@@ -76,6 +76,8 @@
                 <TextView style="@style/MenuGroupLabel" android:text="기타" />
 
                 <TextView android:id="@+id/menu_community" style="@style/MenuItem" android:text="💬   커뮤니티" />
+
+                <TextView android:id="@+id/menu_wishlist" style="@style/MenuItem" android:text="🔖   위시리스트" />
             </LinearLayout>
         </ScrollView>
 

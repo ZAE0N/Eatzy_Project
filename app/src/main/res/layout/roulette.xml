@@ -30,6 +30,19 @@
             android:textSize="28sp" />
 
         <TextView
+            android:id="@+id/btn_add_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_button_outline"
+            android:gravity="center"
+            android:paddingHorizontal="12dp"
+            android:text="＋ 메뉴"
+            android:textColor="@color/roulette_primary"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/btn_profile"
             android:layout_width="36dp"
             android:layout_height="36dp"

@@ -44,9 +44,10 @@ dependencies {
     implementation platform(libs.firebase.bom)
     implementation libs.firebase.analytics
     implementation libs.firebase.database
-    // Google Maps SDK + 위치
+    // Google Maps SDK + 위치 + 장소(실제 식당 검색)
     implementation libs.play.services.maps
     implementation libs.play.services.location
+    implementation libs.places
     // reCAPTCHA Enterprise (봇 방지)
     implementation libs.recaptcha
 }

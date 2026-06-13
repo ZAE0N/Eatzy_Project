@@ -58,6 +58,7 @@ public class SampleData {
 
     /** 커뮤니티 샘플 게시글. */
     private static final List<Post> POSTS = Arrays.asList(
+            dummyTestPost(),   // 이미지 + 위치 + 좋아요(베스트) 확인용 더미글
             new Post("강남역 혼밥 가능한 한식집 추천해요!",
                     "오늘 Eatzy 룰렛 돌렸더니 국밥 나왔는데 진짜 맛있었어요! 가격도 착하고 양도 많아요. 혼밥하기도 분위기 좋아서 강추합니다 ㅎㅎ",
                     "김점심"),
@@ -71,6 +72,23 @@ public class SampleData {
                     "요즘 물가 오르면서 8천원 이하로 배부르게 먹기 힘들더라고요. 그래도 찾아보니 꽤 있어요!",
                     "최뭐먹지")
     );
+
+    /**
+     * 기능 확인용 더미 게시글: 첨부 이미지 + 등록 위치 + 좋아요(베스트 임계치 이상).
+     * 이미지는 앱 런처 아이콘(android.resource)으로 갤러리 없이도 표시되게 한다.
+     */
+    private static Post dummyTestPost() {
+        Post p = new Post("📸 베스트 테스트글 - 인하로 국밥 인생맛집",
+                "이미지 + 위치 + 좋아요까지 들어간 확인용 더미 게시글입니다. 아래 '🗺️ 지도' 버튼으로 위치를 확인하고, 좋아요가 "
+                        + CommunityListActivity.BEST_THRESHOLD + "개 이상이라 베스트 탭에도 떠요!",
+                "에디터");
+        p.imageUri = "android.resource://com.inhatc.eatzy_project/mipmap/ic_launcher";
+        p.lat = 37.4520;
+        p.lng = 126.7018;
+        p.placeName = "인천 미추홀구 인하로 100";
+        p.likes = 24;   // BEST_THRESHOLD(10) 이상 → 베스트 탭 노출
+        return p;
+    }
 
     /**
      * restaurants 노드가 비어 있을 때만 샘플 데이터를 심는다(중복 방지).

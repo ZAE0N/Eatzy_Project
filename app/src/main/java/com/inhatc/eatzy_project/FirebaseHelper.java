@@ -26,6 +26,8 @@ public class FirebaseHelper {
     public static final String NODE_MENUS = "menus";             // 메뉴(룰렛 후보)
     public static final String NODE_RESTAURANTS = "restaurants"; // 식당(이름/좌표/메뉴카테고리)
     public static final String NODE_POSTS = "posts";             // 커뮤니티 게시글
+    public static final String NODE_WISHLISTS = "wishlists";     // 사용자별 저장(위시리스트)
+    public static final String NODE_ROULETTE_ITEMS = "rouletteItems"; // 사용자별 룰렛 추가 맛집
 
     // 싱글톤: 앱 전체에서 인스턴스 하나만 공유한다.
     private static FirebaseHelper instance;
@@ -53,6 +55,14 @@ public class FirebaseHelper {
     public DatabaseReference menus() { return rootRef.child(NODE_MENUS); }
     public DatabaseReference restaurants() { return rootRef.child(NODE_RESTAURANTS); }
     public DatabaseReference posts() { return rootRef.child(NODE_POSTS); }
+    /** 특정 사용자의 위시리스트(저장한 게시글 key 모음). */
+    public DatabaseReference wishlist(String userKey) {
+        return rootRef.child(NODE_WISHLISTS).child(userKey);
+    }
+    /** 특정 사용자가 룰렛에 추가한 맛집 목록. */
+    public DatabaseReference rouletteItems(String userKey) {
+        return rootRef.child(NODE_ROULETTE_ITEMS).child(userKey);
+    }
 
     /**
      * 연결이 실제로 되는지 확인하는 테스트용 메서드.

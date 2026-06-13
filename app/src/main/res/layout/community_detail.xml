@@ -123,42 +123,95 @@
                     android:textColor="@color/gray_700"
                     android:textSize="13sp" />
 
-                <TextView
+                <!-- 첨부 이미지(있을 때만) -->
+                <ImageView
+                    android:id="@+id/post_image"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="180dp"
                     android:background="@drawable/bg_thumb"
-                    android:gravity="center"
-                    android:text="🍲"
-                    android:textSize="30sp" />
+                    android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    android:contentDescription="첨부 이미지" />
+
+                <!-- 등록된 위치 + 지도 버튼(위치 있을 때만) -->
+                <LinearLayout
+                    android:id="@+id/loc_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_input"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/post_place"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:singleLine="true"
+                        android:text="📍 위치"
+                        android:textColor="@color/gray_700"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/btn_map"
+                        android:layout_width="wrap_content"
+                        android:layout_height="34dp"
+                        android:background="@drawable/bg_button_primary"
+                        android:gravity="center"
+                        android:paddingHorizontal="14dp"
+                        android:text="🗺️ 지도"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="14dp"
+                    android:layout_marginTop="16dp"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="14dp"
-                        android:text="❤️ 24"
-                        android:textColor="@color/gray_400"
-                        android:textSize="12sp" />
+                        android:id="@+id/btn_like"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_input"
+                        android:gravity="center"
+                        android:text="🤍 0"
+                        android:textColor="@color/gray_700"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="14dp"
+                        android:id="@+id/btn_save"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_input"
+                        android:gravity="center"
                         android:text="🔖 저장"
-                        android:textColor="@color/gray_400"
-                        android:textSize="12sp" />
+                        android:textColor="@color/gray_700"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:id="@+id/btn_report"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_input"
+                        android:gravity="center"
                         android:text="🚩 신고"
                         android:textColor="@color/red"
-                        android:textSize="12sp" />
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <View
